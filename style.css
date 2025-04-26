@@ -1,0 +1,74 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    text-align: center;
+}
+
+/* Header principal */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 0;
+}
+
+/* Artículo principal */
+article {
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón de iniciar */
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 20px 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Pregunta del quiz */
+.pregunta {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de opciones */
+#contenedor div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Opciones del quiz */
+#contenedor button {
+    width: 250px;
+    font-size: 16px;
+}
+
+/* Resultado final */
+h2 {
+    margin-top: 40px;
+    font-size: 32px;
+    color: #333;
+}
+
+p {
+    font-size: 20px;
+}

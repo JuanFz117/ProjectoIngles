@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <h2>Quest</h2>
-    <div id="contenedor">
+    <div id="contenedor"></div>
 
-    </div>
     <script>
        const preguntas = [
     {
@@ -19,7 +20,7 @@
     },
     {
         texto: "You ___ forget to close your HTML tags.",
-        opciones: ["can", "must", "shouldn't", "will"],
+        opciones: ["can", "must", "shouldn‘t", "will"],
         respuesta: 2
     },
     {
@@ -39,12 +40,12 @@
     },
     {
         texto: "You ___ create a new folder to organize your project files.",
-        opciones: ["can", "mustn't", "will", "would"],
+        opciones: ["can", "mustn‘t", "will", "would"],
         respuesta: 0
     },
     {
         texto: "You ___ forget the semicolon in JavaScript; it can cause problems.",
-        opciones: ["may", "shouldn’t", "could", "can"],
+        opciones: ["may", "shouldn‘t", "could", "can"],
         respuesta: 1
     },
     {
@@ -53,95 +54,98 @@
         respuesta: 3
     },
     {
-        texto: "If you don’t understand a concept, you ___ ask for help.",
-        opciones: ["mustn’t", "should", "shall", "would"],
+        texto: "If you don‘t understand a concept, you ___ ask for help.",
+        opciones: ["mustn‘t", "should", "shall", "would"],
         respuesta: 1
     },
     {
-        texto: "You ___ use 'const' for values that don’t change.",
+        texto: "You ___ use 'const' for values that don‘t change.",
         opciones: ["must", "can", "will", "shall"],
         respuesta: 0
-    },
-    {
-        texto: "To create a function in JavaScript, you ___ use the 'function' keyword.",
-        opciones: ["may", "could", "must", "can’t"],
-        respuesta: 2
-    },
-    {
-        texto: "You ___ write comments to explain your code.",
-        opciones: ["might", "should", "can", "would"],
-        respuesta: 1
-    },
-    {
-        texto: "You ___ run your code without saving it.",
-        opciones: ["must", "shouldn’t", "should", "would"],
-        respuesta: 1
-    },
-    {
-        texto: "You ___ try different solutions if your code doesn't work.",
-        opciones: ["can", "shall", "may", "mustn’t"],
-        respuesta: 0
-    },
-    {
-        texto: "You ___ use '<script>' tag to include JavaScript in HTML.",
-        opciones: ["would", "could", "must", "may"],
-        respuesta: 2
-    },
-    {
-        texto: "You ___ name variables with spaces.",
-        opciones: ["can", "must", "shouldn’t", "mustn’t"],
-        respuesta: 3
-    },
-    {
-        texto: "You ___ use online resources like MDN or W3Schools to learn more.",
-        opciones: ["can", "would", "mustn’t", "shall"],
-        respuesta: 0
-    },
-    {
-        texto: "You ___ test your code after every change.",
-        opciones: ["should", "might", "could", "will"],
-        respuesta: 0
-    },
-    {
-        texto: "You ___ leave unused code in your files.",
-        opciones: ["can", "mustn’t", "should", "will"],
-        respuesta: 1
-    },
-    {
-        texto: "You ___ forget to include the file extension when linking a script.",
-        opciones: ["should", "must", "can’t", "shouldn’t"],
-        respuesta: 3
     }
+    // {
+    //     texto: "To create a function in JavaScript, you ___ use the 'function' keyword.",
+    //     opciones: ["may", "could", "must", "can‘t"],
+    //     respuesta: 2
+    // },
+    // {
+    //     texto: "You ___ write comments to explain your code.",
+    //     opciones: ["might", "should", "can", "would"],
+    //     respuesta: 1
+    // },
+    // {
+    //     texto: "You ___ run your code without saving it.",
+    //     opciones: ["must", "shouldn‘t", "should", "would"],
+    //     respuesta: 1
+    // },
+    // {
+    //     texto: "You ___ try different solutions if your code doesn‘t work.",
+    //     opciones: ["can", "shall", "may", "mustn‘t"],
+    //     respuesta: 0
+    // },
+    // {
+    //     texto: "You ___ use '<script>' tag to include JavaScript in HTML.",
+    //     opciones: ["would", "could", "must", "may"],
+    //     respuesta: 2
+    // },
+    // {
+    //     texto: "You ___ name variables with spaces.",
+    //     opciones: ["can", "must", "shouldn‘t", "mustn‘t"],
+    //     respuesta: 3
+    // },
+    // {
+    //     texto: "You ___ use online resources like MDN or W3Schools to learn more.",
+    //     opciones: ["can", "would", "mustn‘t", "shall"],
+    //     respuesta: 0
+    // },
+    // {
+    //     texto: "You ___ test your code after every change.",
+    //     opciones: ["should", "might", "could", "will"],
+    //     respuesta: 0
+    // },
+    // {
+    //     texto: "You ___ leave unused code in your files.",
+    //     opciones: ["can", "mustn‘t", "should", "will"],
+    //     respuesta: 1
+    // },
+    // {
+    //     texto: "You ___ forget to include the file extension when linking a script.",
+    //     opciones: ["should", "must", "can‘t", "shouldn‘t"],
+    //     respuesta: 3
+    // }
 ];
 
 
 let indice = 0;
+let puntuacion = 0; 
 
-
-function mostrarpregunta (){
+function mostrarpregunta(){
     const contenedor = document.getElementById("contenedor");
-    if(indice<preguntas.length){
+    if(indice < preguntas.length){
         const p = preguntas[indice];
         let contexto = `<div class="pregunta">${p.texto}</div>`;
         contexto += '<div>';
-        p.opciones.forEach((opcion,i) =>{
-            contexto += `<botton onclick="siguente pregunta (${i})">${opcion}</button>`;
-        })
+        p.opciones.forEach((opcion, i) => {
+            contexto += `<button onclick="siguientePregunta(${i})">${opcion}</button>`;
+        });
         contexto += '</div>';
         contenedor.innerHTML = contexto;
-    }else{
-        contenedor.innerHTML =``;
-    
+    } else {
+        contenedor.innerHTML =`<h2>Quiz Completed!</h2><p>You answered ${puntuacion} out of ${preguntas.length} questions correctly.</p>`;
+        contenedor.innerHTML += `<button onclick="location.reload()">Restart</button>`; // <<<< Añadido para reiniciar el quiz
+        contenedor.innerHTML += `<button onclick="location.href='index.html'">Back to Home</button>`; // <<<< Añadido para volver a la página de inicio
     }
 }
 
 function siguientePregunta(respuesta){
-    const esCorrecta = (respuesta === preguntas[indice].correcta)
+    if (respuesta === preguntas[indice].respuesta) {
+        puntuacion++; // <<<< Si es correcta, suma 1 punto
+    }
     indice++;
     mostrarpregunta();
 }
 
-mostrarpregunta()
+mostrarpregunta();
 </script>
 
 </body>
